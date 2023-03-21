@@ -21,9 +21,8 @@ jobs:
         with:
           python-version: '3.10'
       - run: |
-          pip install -r requirements.txt
-      - run: |
-          ansible-galaxy collection list
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - run: |
           molecule test
         env:
