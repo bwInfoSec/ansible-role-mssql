@@ -4,7 +4,7 @@
   tasks:
     - name: Include ansible-guacamole
       ansible.builtin.include_role:
-        name: heicloud_windows_ansible.base_roles.install_mssql
+        name: bwinfosec.mssql
       vars:
         mssql_sysadmin_accounts:
           - vagrant
