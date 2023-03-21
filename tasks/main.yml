@@ -9,15 +9,6 @@
     - mssql_agentsvc_account_pass
   tags: install_mssql
 
-- name: Get system language
-  ansible.builtin.include_role:
-    name: heicloud_windows_ansible.base_roles.get_system_language
-  tags: install_mssql
-
-- name: Include language-specific variables {{ system_language }}.
-  ansible.builtin.include_vars: "{{ system_language }}.yml"
-  tags: install_mssql
-
 # Load required powershell modules
 - name: Check for SQLServer DSC Powershell module
   community.windows.win_psmodule:
