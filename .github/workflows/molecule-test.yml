@@ -17,11 +17,10 @@ jobs:
           key: ${{ runner.os }}-vagrant-${{ hashFiles('Vagrantfile') }}
           restore-keys: |
             ${{ runner.os }}-vagrant-
-
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
+      - uses: actions/setup-python@v4
         with:
-          molecule_command: test
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-      
+          python-version: '3.10' 
+      - run: |
+          pip3 install molecule molecule-vagrant
+      - run: |
+          molecule test
