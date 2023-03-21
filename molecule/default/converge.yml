@@ -8,3 +8,4 @@
       vars:
         mssql_sysadmin_accounts:
           - vagrant
+        system_language: en-US
