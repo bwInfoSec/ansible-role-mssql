@@ -1,6 +1,4 @@
 ---
-lint: |
-  ansible-lint
 driver:
   name: vagrant
   provider:
