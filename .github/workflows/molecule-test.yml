@@ -19,8 +19,11 @@ jobs:
             ${{ runner.os }}-vagrant-
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10' 
+          python-version: '3.10'
+          cache: 'pip'
       - run: |
-          pip3 install molecule molecule-vagrant
+          pip install molecule molecule-vagrant ansible-lint
       - run: |
           molecule test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
