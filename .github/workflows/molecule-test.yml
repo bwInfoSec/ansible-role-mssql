@@ -1,0 +1,27 @@
+name: Molecule Test
+
+on: [push]
+
+jobs:
+  molecule-test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Cache Vagrant boxes
+        uses: actions/cache@v2
+        with:
+          path: ~/.vagrant.d/boxes
+          key: ${{ runner.os }}-vagrant-${{ hashFiles('Vagrantfile') }}
+          restore-keys: |
+            ${{ runner.os }}-vagrant-
+
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+      
