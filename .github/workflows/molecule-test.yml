@@ -22,6 +22,8 @@ jobs:
           python-version: '3.10'
           cache: 'pip3'
       - run: |
+          pip install -r requirements.txt
+      - run: |
           molecule test
         env:
           ANSIBLE_FORCE_COLOR: '1'
